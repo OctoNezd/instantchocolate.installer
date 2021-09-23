@@ -1,3 +1,5 @@
+$host.ui.RawUI.WindowTitle = "InstantChocolate - Please wait..."
+
 Function Get-PSScriptPath {
 
     <#
@@ -44,8 +46,8 @@ Function Get-PSScriptPath {
 }
 
 $scriptPath = Get-PsScriptPath
-
 $bytes = Get-Content $scriptPath
 $regex = [Regex]"INSTANTCHOCOLATE"
-$installList = ConvertFrom-Json $regex.Split($bytes)[1].Split(";")
-Choco-Installer $installList -Dummy
+$installList = $regex.Split($bytes)[1]
+$installList =  ConvertFrom-Json  $installList
+Choco-Installer $installList
