@@ -19,7 +19,7 @@ function Choco-Installer {
     $index = 1
     $fails = New-Object System.Collections.ArrayList
     foreach ($package in $packageList) {
-        $host.ui.RawUI.WindowTitle = "InstantChocolate - $index of $($packageList.Length)"
+        $host.ui.RawUI.WindowTitle = "InstantChocolate - $index of $($packageList.Length) - $($package.displayName)"
         Write-Progress -Activity "Installing `"$($package.displayName)`" ($($package.packageName))" -Status "Package $index out of $($packageList.Length)" -PercentComplete ($index / $packageList.Length * 100)
         if ($Dummy) {
             Start-Sleep 1
